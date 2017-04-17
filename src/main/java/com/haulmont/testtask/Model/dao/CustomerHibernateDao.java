@@ -16,7 +16,7 @@ public class CustomerHibernateDao implements Dao<Customer> {
     private Exception lastException = null;
 
     private final EntityManager manager = Persistence
-            .createEntityManagerFactory("org.hibernate.unit")
+            .createEntityManagerFactory("MyPersist")
             .createEntityManager();
 
     @Override
@@ -35,10 +35,11 @@ public class CustomerHibernateDao implements Dao<Customer> {
     public Long create(Customer object) {
         try {
             manager.getTransaction().begin();
-            object = manager.merge(object);
+            manager.persist(object);
             manager.getTransaction().commit();
-            return object.getID();
+            return object.getId();
         } catch (Exception e) {
+            manager.getTransaction().rollback();
             lastException = e;
             throw e;
         }
@@ -47,9 +48,12 @@ public class CustomerHibernateDao implements Dao<Customer> {
     @Override
     public boolean update(Customer object) {
         try {
-            create(object);
+            manager.getTransaction().begin();
+            manager.merge(object);
+            manager.getTransaction().commit();
             return true;
         } catch (Exception e) {
+            manager.getTransaction().rollback();
             lastException = e;
             return false;
         }
@@ -63,6 +67,7 @@ public class CustomerHibernateDao implements Dao<Customer> {
             manager.getTransaction().commit();
             return true;
         } catch (Exception e) {
+            manager.getTransaction().rollback();
             lastException = e;
             return false;
         }

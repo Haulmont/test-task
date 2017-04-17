@@ -1,16 +1,12 @@
 package com.haulmont.testtask;
 
-import com.haulmont.testtask.Controller.CustomerController;
-import com.haulmont.testtask.Controller.CustomerControllerImpl;
-import com.haulmont.testtask.Controller.OrdersController;
-import com.haulmont.testtask.Controller.OrdersControllerImpl;
+import com.haulmont.testtask.Controller.*;
 import com.haulmont.testtask.Model.Customer;
-import com.haulmont.testtask.Model.Order;
 import com.haulmont.testtask.Model.dao.CustomerHibernateDao;
 import com.haulmont.testtask.Model.dao.Dao;
+import com.haulmont.testtask.Model.dao.OrderDao;
 import com.haulmont.testtask.Model.dao.OrderHibernateDao;
-import com.haulmont.testtask.View.MainView;
-import com.haulmont.testtask.View.MainViewVaadin;
+import com.haulmont.testtask.View.*;
 import com.vaadin.annotations.Theme;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.ui.UI;
@@ -22,13 +18,23 @@ public class MainUI extends UI {
     @Override
     protected void init(VaadinRequest request) {
         Dao<Customer> customerDao = new CustomerHibernateDao();
-        Dao<Order> orderDao = new OrderHibernateDao();
+        OrderDao orderDao = new OrderHibernateDao();
 
-        CustomerController customerController = new CustomerControllerImpl(customerDao);
-        OrdersController ordersController = new OrdersControllerImpl(orderDao);
+        MainEventBus mainEventBus = MainEventBusImpl.getInstance();
 
-        MainView view = new MainViewVaadin(customerController, ordersController);
-        view.show();
+        OrdersView ordersView = new OrdersViewVaadin(this, mainEventBus);
+        CustomerView customerView = new CustomerViewVaadin(this, mainEventBus);
+        MainViewVaadin mainViewVaadin = new MainViewVaadin(this, mainEventBus);
+
+        CustomerController customerController = new CustomerControllerImpl(customerDao, customerView, mainEventBus);
+        OrderController ordersController = new OrdersControllerImpl(orderDao, customerDao, ordersView, mainEventBus);
+        MainController mainController = new MainController(mainViewVaadin, mainEventBus);
+
+        setContent(mainViewVaadin);
+
+        //it exists here for test needs, it can be safely deleted
+        TestUtil.getInstance().loadTestData();
     }
+
 
 }

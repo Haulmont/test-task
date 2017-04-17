@@ -1,42 +1,66 @@
 package com.haulmont.testtask.Model;
 
-import lombok.Data;
-import lombok.NonNull;
+import lombok.*;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.Date;
 
 /**
- * Order Entity
+ * Created by Cok on 09.04.2017.
  */
 @Entity
-@Table(name = "Orders")
-@NamedQuery(name = "Order.findAll", query = "SELECT * FROM Orders o")
-@Data(staticConstructor = "of")
+@Table(name = "orders")
+@NoArgsConstructor
+@RequiredArgsConstructor
+@ToString
+@NamedQuery(name = "Order.findAll", query = "from Order")
+@EqualsAndHashCode
 public class Order {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Getter
+    @Setter
+    private Long id;
+    @Column
+    @Getter
+    @Setter
     @NonNull
-    @Column(unique = true, nullable = false)
-    private Long ID;
-
-    @Column(nullable = false, length = 1000)
     private String description;
 
-    private final Customer customer;
+    @Setter
+    @NonNull
+    @Type(type = "bigint")
+    private Customer customer;
 
-    @Type(type="timestamp")
-    @Column(nullable = false)
+    @Column
+    @Type(type = "timestamp")
+    @Getter
+    @Setter
+    @NonNull
     private Date createDate;
 
+    @Column(name = "enddate")
     @Type(type = "timestamp")
-    @Column
+    @Getter
+    @Setter
     private Date closeDate;
-
     @Column
+    @Getter
+    @Setter
+    @NonNull
     private Double cost;
+    @Column
+    @Getter
+    @Setter
+    @NonNull
+    @Enumerated(EnumType.STRING)
     private OrderStatus status;
 
+    @Access(AccessType.PROPERTY)
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Customer.class)
+    @JoinColumn(name = "CUSTOMER", nullable = false, foreignKey = @ForeignKey(name = "FK_CUSTOMER"))
+    public Customer getCustomer() {
+        return this.customer;
+    }
 }

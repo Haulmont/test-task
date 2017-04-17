@@ -1,5 +1,6 @@
 package com.haulmont.testtask.Model.dao;
 
+import com.haulmont.testtask.Model.Customer;
 import com.haulmont.testtask.Model.Order;
 
 import javax.persistence.EntityManager;
@@ -11,12 +12,12 @@ import java.util.Optional;
 /**
  * Created by Cok on 09.04.2017.
  */
-public class OrderHibernateDao implements Dao<Order> {
+public class OrderHibernateDao implements Dao<Order>, OrderDao {
 
     private Exception lastException = null;
 
     private final EntityManager manager = Persistence
-            .createEntityManagerFactory("org.hibernate.unit")
+            .createEntityManagerFactory("MyPersist")
             .createEntityManager();
 
     @Override
@@ -37,7 +38,7 @@ public class OrderHibernateDao implements Dao<Order> {
             manager.getTransaction().begin();
             object = manager.merge(object);
             manager.getTransaction().commit();
-            return object.getID();
+            return object.getId();
         } catch (Exception e) {
             lastException = e;
             throw e;
@@ -71,5 +72,13 @@ public class OrderHibernateDao implements Dao<Order> {
     @Override
     public Optional<Exception> getException() {
         return Optional.ofNullable(lastException);
+    }
+
+    @Override
+    public List<Order> findByCustomerId(Customer id) {
+        TypedQuery<Order> findAll = manager
+                .createQuery("FROM Order o WHERE o.customer=:id", Order.class)
+                .setParameter("id", id);
+        return findAll.getResultList();
     }
 }

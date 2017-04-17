@@ -1,47 +1,56 @@
 package com.haulmont.testtask.View;
 
-import com.haulmont.testtask.Controller.CustomerController;
-import com.haulmont.testtask.Controller.OrdersController;
+import com.haulmont.testtask.Event.ShowCustomerEvent;
+import com.haulmont.testtask.Event.ShowOrderEvent;
+import com.haulmont.testtask.MainEventBus;
+import com.vaadin.annotations.Theme;
+import com.vaadin.event.ShortcutAction;
+import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
-import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.UI;
+import com.vaadin.ui.themes.ValoTheme;
 
 /**
  * Implementation of MainView with Vaadin framework
  */
-public class MainViewVaadin implements MainView {
+@Theme(ValoTheme.THEME_NAME)
+public class MainViewVaadin extends HorizontalLayout implements MainView {
 
-    private final CustomerController customerController;
-    private final OrdersController ordersController;
+    private UI mainUI;
+    private final MainEventBus eventBus;
 
-    private VerticalLayout verticalLayout = new VerticalLayout();
 
-    public MainViewVaadin(CustomerController customerController, OrdersController ordersController) {
-        this.customerController = customerController;
-        this.ordersController = ordersController;
+    public MainViewVaadin(UI mainUI, MainEventBus eventBus) {
+        this.mainUI = mainUI;
+        this.eventBus = eventBus;
+        this.eventBus.register(this);
+        show();
     }
 
-    @Override
-    public OrdersView showOrders() {
-        OrdersView ordersView = new OrdersViewVaadin(ordersController);
-        ordersView.show();
-        return ordersView;
-    }
-
-    @Override
-    public ClientsView showClients() {
-        return null;
-    }
 
     @Override
     public void show() {
-        verticalLayout.setMargin(true);
-        verticalLayout.setSizeFull();
-        Button showOrdersBtn = new Button("Посмотреть заказы");
+        this.removeAllComponents();
+        setSizeFull();
+        Button showOrdersBtn = new Button("Посмотреть список заказов");
         showOrdersBtn.addClickListener(event -> {
-            showOrders();
+            eventBus.post(new ShowOrderEvent());
+        });
+        showOrdersBtn.setClickShortcut(ShortcutAction.KeyCode.ARROW_LEFT, ShortcutAction.ModifierKey.CTRL);
+
+        Button showCustomersBtn = new Button("Посмотреть список клиентов");
+        showCustomersBtn.addClickListener(event -> {
+            eventBus.post(new ShowCustomerEvent());
         });
 
+        showCustomersBtn.setClickShortcut(ShortcutAction.KeyCode.ARROW_RIGHT, ShortcutAction.ModifierKey.CTRL);
 
 
+        setMargin(false);
+        this.addComponents(showOrdersBtn, showCustomersBtn);
+        this.setComponentAlignment(showOrdersBtn, Alignment.MIDDLE_CENTER);
+        this.setComponentAlignment(showCustomersBtn, Alignment.MIDDLE_CENTER);
+        mainUI.setContent(this);
     }
 }

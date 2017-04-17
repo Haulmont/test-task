@@ -11,18 +11,6 @@ package com.haulmont.testtask.View;
 public interface MainView {
 
     /**
-     * Show orders table
-     * @return orders view
-     */
-    OrdersView showOrders();
-
-    /**
-     * Show clients table
-     * @return clients view
-     */
-    ClientsView showClients();
-
-    /**
      * Show main buttons to show orders and clients table
      */
     void show();

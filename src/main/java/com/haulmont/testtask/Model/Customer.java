@@ -5,33 +5,40 @@ import lombok.*;
 import javax.persistence.*;
 
 /**
- * Customer Entity
+ * Created by Cok on 09.04.2017.
  */
 @Entity
-@Table(name = "Customers")
-@NamedNativeQueries(value =
-        {
-                @NamedNativeQuery(name = "Customer.findAll", query = "SELECT * FROM Customers c"),
-                @NamedNativeQuery(name = "Customer.findById", query = "SELECT * FROM Customers c where id=:id")
-        })
-
-@Data
+@Table(name = "customers")
+@RequiredArgsConstructor
 @NoArgsConstructor
+@ToString
+@NamedQuery(name = "Customer.findAll", query = "from Customer")
+@EqualsAndHashCode
 public class Customer {
-
+    @Getter
+    @Setter
+    @NonNull
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    @Column
+    @Getter
+    @Setter
     @NonNull
-    @Column(unique = true, nullable = false)
-    private Long ID;
-
-    @Column(nullable = false)
     private String firstName;
-    @Column(nullable = false)
+    @Column
+    @Getter
+    @Setter
+    @NonNull
     private String lastName;
     @Column
-    private String familyName;
+    @Getter
+    @Setter
+    @NonNull
+    private String thirdName;
     @Column
-    private String phoneNumber;
-
+    @Getter
+    @Setter
+    @NonNull
+    private Long phone;
 }
