@@ -52,6 +52,7 @@ public class CustomerControllerTest {
 
         mainEventBus.post(new ShowCustomerEvent());
         Mockito.verify(mockCustomerView, times(1)).show(Arrays.asList(cust1, cust2, cust3));
+        Mockito.verify(mockCustomerDao, times(1)).findAll();
     }
 
     @Test
