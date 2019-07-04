@@ -104,7 +104,7 @@ public class OrderDaoTest {
         customer.setFirstName("firstName");
         customer.setLastName("lastName");
         customer.setThirdName("thirdName");
-        customer.setPhone(89608150590L);
+        customer.setPhone("89678180792");
 
         customerDao.create(customer);
 
@@ -140,7 +140,7 @@ public class OrderDaoTest {
         customer.setFirstName("firstName");
         customer.setLastName("lastName");
         customer.setThirdName("thirdName");
-        customer.setPhone(89608150590L);
+        customer.setPhone("89678180792");
 
         customerDao.create(customer);
 
@@ -167,7 +167,7 @@ public class OrderDaoTest {
         customer.setFirstName("firstName");
         customer.setLastName("lastName");
         customer.setThirdName("thirdName");
-        customer.setPhone(89608150590L);
+        customer.setPhone("89678180792");
 
         Long custId = customerDao.create(customer);
 

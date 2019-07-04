@@ -40,7 +40,7 @@ public class CustomerDaoTest {
         customer.setFirstName("firstName");
         customer.setLastName("lastName");
         customer.setThirdName("thirdName");
-        customer.setPhone(89608150590L);
+        customer.setPhone("89676547797");
 
         Long id = customerHibernateDao.create(customer);
 
@@ -57,7 +57,7 @@ public class CustomerDaoTest {
         assertEquals("firstName", customerFromDB.getFirstName());
         assertEquals("lastName", customerFromDB.getLastName());
         assertEquals("thirdName", customerFromDB.getThirdName());
-        assertEquals(Long.valueOf(89608150590L), customerFromDB.getPhone());
+        assertEquals("89676547797", customerFromDB.getPhone());
 
     }
 
@@ -67,7 +67,7 @@ public class CustomerDaoTest {
         customer.setFirstName("firstName");
         customer.setLastName("lastName");
         customer.setThirdName("thirdName");
-        customer.setPhone(89608150590L);
+        customer.setPhone("89676547797");
 
         Long id = customerHibernateDao.create(customer);
 
@@ -77,7 +77,7 @@ public class CustomerDaoTest {
         customerFromDB.setFirstName("firstName2");
         customerFromDB.setLastName("lastName2");
         customerFromDB.setThirdName("thirdName2");
-        customerFromDB.setPhone(111L);
+        customerFromDB.setPhone("111");
 
         boolean successUpdate = customerHibernateDao.update(customerFromDB);
         assertTrue(successUpdate);
@@ -86,7 +86,7 @@ public class CustomerDaoTest {
         assertEquals("firstName2", customerFromDB.getFirstName());
         assertEquals("lastName2", customerFromDB.getLastName());
         assertEquals("thirdName2", customerFromDB.getThirdName());
-        assertEquals(Long.valueOf(111L), customerFromDB.getPhone());
+        assertEquals("111", customerFromDB.getPhone());
 
     }
 
@@ -96,13 +96,13 @@ public class CustomerDaoTest {
         customer.setFirstName("firstName");
         customer.setLastName("lastName");
         customer.setThirdName("thirdName");
-        customer.setPhone(89608150590L);
+        customer.setPhone("89676547797");
 
         Customer customer2 = new Customer();
         customer2.setFirstName("firstName2");
         customer2.setLastName("lastName2");
         customer2.setThirdName("thirdName2");
-        customer2.setPhone(89608150592L);
+        customer2.setPhone("89608150592");
 
 
         customerHibernateDao.create(customer);
@@ -119,13 +119,13 @@ public class CustomerDaoTest {
         customer.setFirstName("firstName");
         customer.setLastName("lastName");
         customer.setThirdName("thirdName");
-        customer.setPhone(89608150590L);
+        customer.setPhone("89676547797");
 
         Customer customer2 = new Customer();
         customer2.setFirstName("firstName2");
         customer2.setLastName("lastName2");
         customer2.setThirdName("thirdName2");
-        customer2.setPhone(89608150592L);
+        customer2.setPhone("89608150592");
 
 
         customerHibernateDao.create(customer);
@@ -147,7 +147,7 @@ public class CustomerDaoTest {
         customer.setFirstName("firstName");
         customer.setLastName("lastName");
         customer.setThirdName("thirdName");
-        customer.setPhone(89608150590L);
+        customer.setPhone("89676547797");
 
         customerHibernateDao.create(customer);
 

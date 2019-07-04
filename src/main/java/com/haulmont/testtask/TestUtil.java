@@ -34,32 +34,32 @@ public class TestUtil {
             OrderHibernateDao orderDao = new OrderHibernateDao();
 
             Customer a1 = new Customer();
-            a1.setFirstName("Никита");
-            a1.setLastName("Саломатин");
-            a1.setThirdName("Александрович");
-            a1.setPhone(89608150590L);
+            a1.setFirstName("Первый клиент");
+            a1.setLastName("Первый клиентовый");
+            a1.setThirdName("Первый клиентович");
+            a1.setPhone("89678155687");
             Customer a2 = new Customer();
-            a2.setFirstName("Ник");
-            a2.setLastName("Саломатин");
-            a2.setThirdName("Александрович");
-            a2.setPhone(89608150590L);
+            a2.setFirstName("Второй");
+            a2.setLastName("Второвый");
+            a2.setThirdName("Вторович");
+            a2.setPhone("+78652347654");
             Customer a3 = new Customer();
-            a3.setFirstName("Click");
-            a3.setLastName("Саломатин");
-            a3.setThirdName("Александрович");
-            a3.setPhone(89608150590L);
+            a3.setFirstName("Третий");
+            a3.setLastName("Третивой");
+            a3.setThirdName("Третивович");
+            a3.setPhone("+78945678745");
             Customer a4 = new Customer();
-            a4.setFirstName("Fip");
-            a4.setLastName("Александрович");
-            a4.setThirdName("Александрович");
-            a4.setPhone(89608150590L);
+            a4.setFirstName("Fifth");
+            a4.setLastName("Fifthov");
+            a4.setThirdName("Fifthovich");
+            a4.setPhone("+75556667865");
 
             Arrays.asList(a1, a2, a3, a4).forEach(customerDao::create);
 
-            Order b1 = new Order("Движок", a1, new Date(System.currentTimeMillis()), 0.0d, OrderStatus.PLANNED);
-            Order b2 = new Order("Коробка", a2, new Date(System.currentTimeMillis()), 0.0d, OrderStatus.DONE);
-            Order b3 = new Order("Ступица", a1, new Date(System.currentTimeMillis()), 0.0d, OrderStatus.ACCEPTED);
-            Order b4 = new Order("Граната", a2, new Date(System.currentTimeMillis()), 0.0d, OrderStatus.PLANNED);
+            Order b1 = new Order("Починить дверь", a1, new Date(System.currentTimeMillis()), 0.0d, OrderStatus.PLANNED);
+            Order b2 = new Order("Поменять масло", a2, new Date(System.currentTimeMillis()), 0.0d, OrderStatus.DONE);
+            Order b3 = new Order("Осмотр ходовой", a1, new Date(System.currentTimeMillis()), 0.0d, OrderStatus.ACCEPTED);
+            Order b4 = new Order("Замена чего-то", a2, new Date(System.currentTimeMillis()), 0.0d, OrderStatus.PLANNED);
 
             Arrays.asList(b1, b2, b3, b4).forEach(orderDao::create);
         }

@@ -45,9 +45,9 @@ public class OrderControllerTest {
     @Test
     public void controllerShouldShowOrdersByShowEvent() throws Exception {
 
-        Customer cust1 = new Customer(1L, "Nikita", "Sal", "Aleks", 89608150590L);
-        Customer cust2 = new Customer(2L, "Nikita2", "Sal", "Aleks", 89608150590L);
-        Customer cust3 = new Customer(3L, "Nikita3", "Sal", "Aleks", 89608150590L);
+        Customer cust1 = new Customer(1L, "Nikita", "Sal", "Aleks", "89678180792");
+        Customer cust2 = new Customer(2L, "Nikita2", "Sal", "Aleks", "89678180792");
+        Customer cust3 = new Customer(3L, "Nikita3", "Sal", "Aleks", "89678180792");
 
         Order order = new Order("testDesc", cust1, new Date(System.currentTimeMillis()), 0.0d, OrderStatus.PLANNED);
         Order order2 = new Order("testDesc2", cust1, new Date(System.currentTimeMillis()), 0.0d, OrderStatus.PLANNED);
@@ -76,9 +76,9 @@ public class OrderControllerTest {
 
     @Test
     public void controllerShouldShowFilteredOrdersByCustomerFilter() throws Exception {
-        Customer cust1 = new Customer(1L, "Nikita", "Sal", "Aleks", 89608150590L);
-        Customer cust2 = new Customer(2L, "Nikita2", "Sal", "Aleks", 89608150590L);
-        Customer cust3 = new Customer(3L, "Nikita3", "Sal", "Aleks", 89608150590L);
+        Customer cust1 = new Customer(1L, "Nikita", "Sal", "Aleks", "89678180792");
+        Customer cust2 = new Customer(2L, "Nikita2", "Sal", "Aleks", "89678180792");
+        Customer cust3 = new Customer(3L, "Nikita3", "Sal", "Aleks", "89678180792");
 
         Order order = new Order("testDesc", cust1, new Date(System.currentTimeMillis()), 0.0d, OrderStatus.PLANNED);
         Order order2 = new Order("testDesc2", cust1, new Date(System.currentTimeMillis()), 0.0d, OrderStatus.PLANNED);
@@ -107,9 +107,9 @@ public class OrderControllerTest {
 
     @Test
     public void controllerShouldShowFilteredOrdersByDescriptionFilter() throws Exception {
-        Customer cust1 = new Customer(1L, "Nikita", "Sal", "Aleks", 89608150590L);
-        Customer cust2 = new Customer(2L, "Nikita2", "Sal", "Aleks", 89608150590L);
-        Customer cust3 = new Customer(3L, "Nikita3", "Sal", "Aleks", 89608150590L);
+        Customer cust1 = new Customer(1L, "Nikita", "Sal", "Aleks", "89678180792");
+        Customer cust2 = new Customer(2L, "Nikita2", "Sal", "Aleks", "89678180792");
+        Customer cust3 = new Customer(3L, "Nikita3", "Sal", "Aleks", "89678180792");
 
         Order order = new Order("testDesc", cust1, new Date(System.currentTimeMillis()), 0.0d, OrderStatus.PLANNED);
         Order order2 = new Order("mescDesc2", cust1, new Date(System.currentTimeMillis()), 0.0d, OrderStatus.PLANNED);
@@ -138,9 +138,9 @@ public class OrderControllerTest {
 
     @Test
     public void controllerShouldShowFilteredOrdersByStatusFilter() throws Exception {
-        Customer cust1 = new Customer(1L, "Nikita", "Sal", "Aleks", 89608150590L);
-        Customer cust2 = new Customer(2L, "Nikita2", "Sal", "Aleks", 89608150590L);
-        Customer cust3 = new Customer(3L, "Nikita3", "Sal", "Aleks", 89608150590L);
+        Customer cust1 = new Customer(1L, "Nikita", "Sal", "Aleks", "89678180792");
+        Customer cust2 = new Customer(2L, "Nikita2", "Sal", "Aleks", "89678180792");
+        Customer cust3 = new Customer(3L, "Nikita3", "Sal", "Aleks", "89678180792");
 
         Order order = new Order("testDesc", cust1, new Date(System.currentTimeMillis()), 0.0d, OrderStatus.PLANNED);
         Order order2 = new Order("mescDesc2", cust1, new Date(System.currentTimeMillis()), 0.0d, OrderStatus.DONE);
@@ -169,9 +169,9 @@ public class OrderControllerTest {
 
     @Test
     public void controllerShouldShowAllOrdersByNoneFilter() throws Exception {
-        Customer cust1 = new Customer(1L, "Nikita", "Sal", "Aleks", 89608150590L);
-        Customer cust2 = new Customer(2L, "Nikita2", "Sal", "Aleks", 89608150590L);
-        Customer cust3 = new Customer(3L, "Nikita3", "Sal", "Aleks", 89608150590L);
+        Customer cust1 = new Customer(1L, "Nikita", "Sal", "Aleks", "89678180792");
+        Customer cust2 = new Customer(2L, "Nikita2", "Sal", "Aleks", "89678180792");
+        Customer cust3 = new Customer(3L, "Nikita3", "Sal", "Aleks", "89678180792");
 
         Order order = new Order("testDesc", cust1, new Date(System.currentTimeMillis()), 0.0d, OrderStatus.PLANNED);
         Order order2 = new Order("mescDesc2", cust1, new Date(System.currentTimeMillis()), 0.0d, OrderStatus.DONE);

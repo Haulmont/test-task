@@ -38,9 +38,9 @@ public class CustomerControllerTest {
 
     @Test
     public void controllerShouldCallViewToShowCustomersWhenEventIsComing() throws Exception {
-        Customer cust1 = new Customer(1L, "Nikita", "Sal", "Aleks", 89608150590L);
-        Customer cust2 = new Customer(2L, "Nikita2", "Sal", "Aleks", 89608150590L);
-        Customer cust3 = new Customer(3L, "Nikita3", "Sal", "Aleks", 89608150590L);
+        Customer cust1 = new Customer(1L, "Nikita", "Sal", "Aleks", "89678180792");
+        Customer cust2 = new Customer(2L, "Nikita2", "Sal", "Aleks", "89678180792");
+        Customer cust3 = new Customer(3L, "Nikita3", "Sal", "Aleks", "89678180792");
 
         when(mockCustomerDao.findAll()).thenReturn(Arrays.asList(cust1, cust2, cust3));
         when(mockCustomerDao.findById(1L)).thenReturn(Optional.of(cust1));
@@ -57,9 +57,9 @@ public class CustomerControllerTest {
 
     @Test
     public void controllerShouldCreateNewUserAndShowHimInTable() throws Exception {
-        Customer cust1 = new Customer(1L, "Nikita", "Sal", "Aleks", 89608150590L);
-        Customer cust2 = new Customer(2L, "Nikita2", "Sal", "Aleks", 89608150590L);
-        Customer cust3 = new Customer(3L, "Nikita3", "Sal", "Aleks", 89608150590L);
+        Customer cust1 = new Customer(1L, "Nikita", "Sal", "Aleks", "89678180792");
+        Customer cust2 = new Customer(2L, "Nikita2", "Sal", "Aleks", "89678180792");
+        Customer cust3 = new Customer(3L, "Nikita3", "Sal", "Aleks", "89678180792");
 
         when(mockCustomerDao.findAll()).thenReturn(Arrays.asList(cust1, cust2, cust3));
         when(mockCustomerDao.findById(1L)).thenReturn(Optional.of(cust1));
@@ -76,9 +76,9 @@ public class CustomerControllerTest {
 
     @Test
     public void controllerShouldUpdateCustomer() throws Exception {
-        Customer cust1 = new Customer(1L, "Nikita", "Sal", "Aleks", 89608150590L);
-        Customer cust2 = new Customer(2L, "Nikita2", "Sal", "Aleks", 89608150590L);
-        Customer cust3 = new Customer(3L, "Nikita3", "Sal", "Aleks", 89608150590L);
+        Customer cust1 = new Customer(1L, "Nikita", "Sal", "Aleks", "89678180792");
+        Customer cust2 = new Customer(2L, "Nikita2", "Sal", "Aleks", "89678180792");
+        Customer cust3 = new Customer(3L, "Nikita3", "Sal", "Aleks", "89678180792");
 
         when(mockCustomerDao.findAll()).thenReturn(Arrays.asList(cust1, cust2, cust3));
         when(mockCustomerDao.findById(1L)).thenReturn(Optional.of(cust1));
@@ -95,9 +95,9 @@ public class CustomerControllerTest {
 
     @Test
     public void controlerShouldDeleteUser() throws Exception {
-        Customer cust1 = new Customer(1L, "Nikita", "Sal", "Aleks", 89608150590L);
-        Customer cust2 = new Customer(2L, "Nikita2", "Sal", "Aleks", 89608150590L);
-        Customer cust3 = new Customer(3L, "Nikita3", "Sal", "Aleks", 89608150590L);
+        Customer cust1 = new Customer(1L, "Nikita", "Sal", "Aleks", "89678180792");
+        Customer cust2 = new Customer(2L, "Nikita2", "Sal", "Aleks", "89678180792");
+        Customer cust3 = new Customer(3L, "Nikita3", "Sal", "Aleks", "89678180792");
 
         when(mockCustomerDao.findAll()).thenReturn(Arrays.asList(cust1, cust2, cust3));
         when(mockCustomerDao.findById(1L)).thenReturn(Optional.of(cust1));
@@ -114,9 +114,9 @@ public class CustomerControllerTest {
 
     @Test
     public void controllerShouldShowDeleteErrorWhenCustomerHasOrders() throws Exception {
-        Customer cust1 = new Customer(1L, "Nikita", "Sal", "Aleks", 89608150590L);
-        Customer cust2 = new Customer(2L, "Nikita2", "Sal", "Aleks", 89608150590L);
-        Customer cust3 = new Customer(3L, "Nikita3", "Sal", "Aleks", 89608150590L);
+        Customer cust1 = new Customer(1L, "Nikita", "Sal", "Aleks", "89678180792");
+        Customer cust2 = new Customer(2L, "Nikita2", "Sal", "Aleks", "89678180792");
+        Customer cust3 = new Customer(3L, "Nikita3", "Sal", "Aleks", "89678180792");
 
         when(mockCustomerDao.findAll()).thenReturn(Arrays.asList(cust1, cust2, cust3));
         when(mockCustomerDao.findById(1L)).thenReturn(Optional.of(cust1));

@@ -54,7 +54,7 @@ public class AddCustomerWindowImpl extends Window implements CustomerWindow {
                 customer.setFirstName(firstName.getValue());
                 customer.setLastName(lastName.getValue());
                 customer.setThirdName(thirdName.getValue());
-                customer.setPhone(Long.valueOf(phone.getValue()));
+                customer.setPhone(phone.getValue());
                 bus.post(new SaveNewCustomerEvent(customer));
                 close();
             } catch (Validator.InvalidValueException e) {

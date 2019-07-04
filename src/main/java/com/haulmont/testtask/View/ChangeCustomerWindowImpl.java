@@ -60,7 +60,7 @@ public class ChangeCustomerWindowImpl extends Window implements CustomerWindow {
                 this.customer.setFirstName(firstName.getValue());
                 this.customer.setLastName(lastName.getValue());
                 this.customer.setThirdName(thirdName.getValue());
-                this.customer.setPhone(Long.valueOf(phone.getValue()));
+                this.customer.setPhone(phone.getValue());
                 bus.post(new SaveCustomerEvent(this.customer));
                 close();
             } catch (Validator.InvalidValueException e) {

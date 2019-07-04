@@ -40,5 +40,5 @@ public class Customer {
     @Getter
     @Setter
     @NonNull
-    private Long phone;
+    private String phone;
 }
